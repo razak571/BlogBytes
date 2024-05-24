@@ -87,15 +87,15 @@ function PostForm({ post }) {
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
         <Input
-          label="Title :"
+          label={<span className="text-white">Title :</span>}
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 py-4"
           {...register("title", { required: true })}
         />
         <Input
-          label="Slug : "
+          label={<span className="text-white">Slug :</span>}
           placeholder="Slug"
-          className="mb-4"
+          className="mb-4 py-4"
           {...register("slug", {
             required: true,
           })}
@@ -107,7 +107,7 @@ function PostForm({ post }) {
         />
 
         <RTE
-          label="Content :"
+          label={<span className="text-white">Content :</span>}
           name="content"
           control={control}
           defaultValue={getValues("content")}
@@ -116,9 +116,9 @@ function PostForm({ post }) {
 
       <div className="w-1/3 px-2">
         <Input
-          label="Feautured Image :"
+          label={<span className="text-white">Feautured Image :</span>}
           type="file"
-          className="mb-4"
+          className="mb-4 py-3"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
@@ -134,16 +134,16 @@ function PostForm({ post }) {
         )}
 
         <Select
+          label={<span className="text-white">Status :</span>}
           options={["active", "inactive"]}
-          label="Status"
-          className="mb-4"
+          className="mt-2 py-4"
           {...register("status", { required: true })}
         />
 
         <Button
           type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          bgColor={post ? "bg-green-500" : "bg-black"}
+          className="w-full mt-12 py-4"
         >
           {post ? "Update" : "Submit"}
         </Button>

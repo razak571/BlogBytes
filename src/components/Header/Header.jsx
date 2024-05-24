@@ -2,13 +2,12 @@ import React from "react";
 import { Container, Logo, LogoutBtn } from "../index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status); // douth
-
   const navigate = useNavigate();
-
+  const location = useLocation();
   const navItems = [
     {
       name: "Home",
@@ -38,12 +37,12 @@ function Header() {
   ];
 
   return (
-    <header className="py-3 shadow bg-gray-500">
+    <header className="py-3 shadow bg-black">
       <Container>
         <nav className="flex">
-          <div className="mr-4">
+          <div className="mr-4 mt-1">
             <Link to="/">
-              <Logo width="70px" />
+              <Logo width="70px" color="gray" />
             </Link>
           </div>
           <ul className="flex ml-auto">
@@ -52,7 +51,11 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+                    className={` ${
+                      location.pathname === item.slug
+                        ? "text-white  hover:text-indigo-700  "
+                        : "text-gray-400 hover:text-indigo-700"
+                    }  inline-block px-6 py-2 duration-200  `}
                   >
                     {item.name}
                   </button>
@@ -64,6 +67,13 @@ function Header() {
                 <LogoutBtn />
               </li>
             )}
+            <li>
+              <button
+                className={` text-gray-400 inline-block px-6 py-2 duration-200 hover:animate-colorChange`}
+              >
+                Switch Mode
+              </button>
+            </li>
           </ul>
         </nav>
       </Container>

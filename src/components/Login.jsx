@@ -27,7 +27,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full ">
+    <div className="flex items-center justify-center w-full bg-gray-400 ">
       <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl 
         p-10 border border-black/10`}
@@ -38,10 +38,10 @@ function Login() {
           </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">
-          Sign in to your account
+          Login to your account
         </h2>
         <p className="mt-2 text-center text-base text-black/60">
-          Don&apos;t have any account?&nbps;
+          Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
             className="font-medium text-primary transition-all duration-200 hover:underline"
@@ -73,7 +73,7 @@ function Login() {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-gray-800">
               Sign in
             </Button>
           </div>

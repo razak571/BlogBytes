@@ -40,12 +40,12 @@ function Signup() {
           Sign in to your account
         </h2>
         <p className="mt-2 text-center text-base text-black/60">
-          Don&apos;t have any account?&nbps;
+          Already have an account?&nbsp;
           <Link
-            to="/signup"
+            to="/login"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
-            Sign Up
+            Login
           </Link>
         </p>
         {error && <p className="text-red-600 text-center mt-8"> {error} </p>}
@@ -79,7 +79,7 @@ function Signup() {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-gray-800">
               Create Account
             </Button>
           </div>
