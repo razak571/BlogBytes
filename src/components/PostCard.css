@@ -1,0 +1,13 @@
+.post-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s, box-shadow 0.1s;
+  perspective: 10000px;
+  will-change: transform;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-card:hover {
+  cursor: pointer;
+  transform: scale(1.06) rotateX(10deg) rotateY(-10deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

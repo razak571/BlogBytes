@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
+const handleClick = () => {
+  alert("Coming Soon");
+};
+
 function Header() {
   const authStatus = useSelector((state) => state.auth.status); // douth
   const navigate = useNavigate();
@@ -37,7 +41,7 @@ function Header() {
   ];
 
   return (
-    <header className="py-3 shadow bg-black">
+    <header className="top-100 fixed top-0  w-full z-50 py-3 mb-24 shadow bg-black ">
       <Container>
         <nav className="flex">
           <div className="mr-4 mt-1">
@@ -69,6 +73,7 @@ function Header() {
             )}
             <li>
               <button
+                onClick={handleClick}
                 className={` text-gray-400 inline-block px-6 py-2 duration-200 hover:animate-colorChange`}
               >
                 Switch Mode
