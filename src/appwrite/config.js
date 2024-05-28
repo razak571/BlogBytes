@@ -15,16 +15,24 @@ export class DatabaseService {
     this.storage = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createPost({
+    title,
+    slug,
+    content,
+    featuredImage,
+    status,
+    userId,
+    authorName,
+  }) {
     try {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
-        { title, content, featuredImage, status, userId }
+        { title, content, featuredImage, status, userId, authorName }
       );
     } catch (error) {
-      console.log("Appwrite service :: createPost :: error", error);
+      console.log("Appwrite service :: createPost :: error:", error.message);
     }
   }
 
@@ -37,7 +45,7 @@ export class DatabaseService {
         { title, content, featuredImage, status } //not giving userId beacuse the person created post only will be able to update
       );
     } catch (error) {
-      console.log("Appwrite service :: updatePost :: error", error);
+      console.log("Appwrite service :: updatePost :: error:", error.message);
     }
   }
 
@@ -50,7 +58,7 @@ export class DatabaseService {
       );
       return true;
     } catch (error) {
-      console.log("Appwrite service :: deletePost :: error", error);
+      console.log("Appwrite service :: deletePost :: error:", error.message);
       return false;
     }
   }
@@ -63,7 +71,7 @@ export class DatabaseService {
         slug
       );
     } catch (error) {
-      console.log("Appwrite service :: getPost :: error", error);
+      console.log("Appwrite service :: getPost :: error:", error.message);
       return false;
     }
   }
@@ -76,7 +84,7 @@ export class DatabaseService {
         queries
       );
     } catch (error) {
-      console.log("Appwrite service :: getAllPosts :: error", error);
+      console.log("Appwrite service :: getAllPosts :: error:", error.message);
       return false;
     }
   }
@@ -91,7 +99,7 @@ export class DatabaseService {
         file
       );
     } catch (error) {
-      console.log("Appwrite service :: uploadFile :: error", error);
+      console.log("Appwrite service :: uploadFile :: error:", error.message);
       return false;
     }
   }
@@ -101,7 +109,7 @@ export class DatabaseService {
       await this.storage.deleteFile(conf.appwriteBucketId, fileId);
       return true;
     } catch (error) {
-      console.log("Appwrite service :: deleteFile :: error", error);
+      console.log("Appwrite service :: deleteFile :: error", error.message);
       return false;
     }
   }
@@ -110,7 +118,10 @@ export class DatabaseService {
     try {
       return this.storage.getFilePreview(conf.appwriteBucketId, fileId);
     } catch (error) {
-      console.log("Appwrite service :: getFilePreview :: error", error);
+      console.log(
+        "Appwrite service :: getFilePreview :: error:",
+        error.message
+      );
       return false;
     }
   }

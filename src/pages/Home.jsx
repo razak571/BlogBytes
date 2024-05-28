@@ -44,7 +44,7 @@ function Home() {
           <div className="flex flex-wrap">
             <div className="w-full p-2">
               <h1 className="text-2xl font-bold hover:text-gray-500">
-                Login to read posts
+                Login to read or create your own posts
               </h1>
             </div>
           </div>

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import appwriteService from "../appwrite/config";
 import "./PostCard.css";
 
-function PostCard({ $id, title, featuredImage, $createdAt }) {
+function PostCard({ $id, title, featuredImage, $createdAt, authorName }) {
+  const [capitalizedAuthorName, setCapitalizedAuthorName] = useState(
+    "" || "Name not available"
+  );
+
+  useEffect(() => {
+    if (authorName) {
+      const name = authorName.toUpperCase();
+      setCapitalizedAuthorName(name);
+    }
+  }, [authorName]);
+
   const cardRef = React.useRef(null);
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -50,7 +61,7 @@ function PostCard({ $id, title, featuredImage, $createdAt }) {
           />
         </div>
         <h2 className="text-xl font-bold"> Title : {title} </h2>
-        <h3 className="text-xl font-bold"> Author: {} </h3>
+        <h3 className="text-xl font-bold"> Author: {capitalizedAuthorName} </h3>
         <h6 className="text-xl font-bold">
           Created on : {formatDate($createdAt)}
         </h6>
