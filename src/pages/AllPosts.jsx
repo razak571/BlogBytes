@@ -1,22 +1,38 @@
-import React, { useState, useEffect } from "react";
-import appwriteService from "../appwrite/config";
+import React, { useState } from "react";
+// import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
+// import { useDispatch } from "react-redux";
+// import { addpost } from "../store/postSlice";
+import { useSelector } from "react-redux";
 
 function AllPosts() {
-  const [posts, setPosts] = useState([]);
+  // const [allPosts, setAllPosts] = useState([]);
+  // const dispatch = useDispatch();
+  const allPosts = useSelector((state) => state.post.posts);
 
-  useEffect(() => {}, []);
+  // (async () => {
+  //   const posts = await appwriteService.getPosts([]);
 
-  appwriteService.getPosts([]).then((posts) => {
-    if (posts) {
-      setPosts(posts.documents);
-    }
-  });
+  //   if (posts) {
+  //     setAllPosts(posts.documents);
+  //   }
+  // })();
+  // dispatch(addpost(allPosts));
+  // console.log('posts state', allPosts)
+
+  // appwriteService.getPosts([]).then((posts) => { // [] indicates no query passing
+  //   if (posts) {
+  //     setPosts(posts.documents);
+  //     // console.log('posts::', posts) //{}
+  //     // console.log('A posts::', aposts)//[]
+  //   }
+  //   dispatch(addpost(aposts))
+  // });
   return (
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
-          {posts.map((post) => (
+          {allPosts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">
               <PostCard {...post} />
             </div>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, PostCard } from "../components";
-import appwriteService from "../appwrite/config";
+// import appwriteService from "../appwrite/config";
 import authService from "../appwrite/auth";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   const [name, setName] = useState("");
   const [welcomeMessage, setWelcomeMessage] = useState("");
+  const allPosts = useSelector((state) => state.post.posts);
 
   useEffect(() => {
     authService.getCurrentUser().then((user) => {
@@ -29,15 +31,15 @@ function Home() {
     });
   }, [name]);
 
-  useEffect(() => {
-    appwriteService.getPosts().then((posts) => {
-      if (posts) {
-        setPosts(posts.documents);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   appwriteService.getPosts().then((posts) => { //[] it is not there beacuse we need query to paass here
+  //     if (posts) {
+  //       setPosts(posts.documents);
+  //     }
+  //   });
+  // }, []);
 
-  if (posts.length === 0) {
+  if (allPosts.length === 0) {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>
@@ -45,6 +47,7 @@ function Home() {
             <div className="w-full p-2">
               <h1 className="text-2xl font-bold hover:text-gray-500">
                 Login to read or create your own posts
+                <h6>Logged in and not able to see posts? please reload app!</h6>
               </h1>
             </div>
           </div>
@@ -67,11 +70,13 @@ function Home() {
           ))}
         </p>
         <div className="flex flex-wrap">
-          {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
-            </div>
-          ))}
+          {allPosts
+            .filter((posts) => posts.status === "active")
+            .map((posts) => (
+              <div key={posts.$id} className="p-2 w-1/4">
+                <PostCard {...posts} />
+              </div>
+            ))}
         </div>
       </Container>
     </div>
