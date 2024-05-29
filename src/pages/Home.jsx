@@ -13,7 +13,7 @@ function Home() {
       const capitalizedName = user.name.toUpperCase();
       setName(capitalizedName);
       if (name) {
-        const fullMessage = `Welcome ${name} You Can Read or Add Your Own Posts`;
+        const fullMessage = `Welcome ${name} You Can Read or Add Your Own Posts Now`;
         let index = 0;
 
         const interval = setInterval(() => {
@@ -56,7 +56,7 @@ function Home() {
   return (
     <div className="w-full py-8">
       <Container>
-        <h1 className="text-white flex items-center justify-center  pb-10 ">
+        <p className="text-white flex items-center justify-center pb-10 font-semibold">
           {welcomeMessage.split(name).map((part, index) => (
             <React.Fragment key={index}>
               {part}
@@ -65,7 +65,7 @@ function Home() {
               )}
             </React.Fragment>
           ))}
-        </h1>
+        </p>
         <div className="flex flex-wrap">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">

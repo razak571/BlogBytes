@@ -60,9 +60,14 @@ function PostCard({ $id, title, featuredImage, $createdAt, authorName }) {
             className="rounded-xl"
           />
         </div>
-        <h2 className="text-xl font-bold"> Title : {title} </h2>
-        <h3 className="text-xl font-bold"> Author: {capitalizedAuthorName} </h3>
-        <h6 className="text-xl font-bold">
+        <h1 className="font-semibold  text-gray-700 hover:text-indigo-700">
+          {" "}
+          Title : {title}{" "}
+        </h1>
+        <h6 className="font-semibold text-gray-700 hover:text-indigo-700">
+          Author: {capitalizedAuthorName}
+        </h6>
+        <h6 className="font-semibold text-gray-700 hover:text-indigo-700">
           Created on : {formatDate($createdAt)}
         </h6>
       </div>

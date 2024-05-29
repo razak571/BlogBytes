@@ -41,7 +41,7 @@ function Header() {
   ];
 
   return (
-    <header className="top-100 fixed top-0  w-full z-50 py-3 mb-24 shadow bg-black ">
+    <header className="top-100 fixed top-0  w-full z-50 py-3 mb-24 shadow bg-black font-semibold">
       <Container>
         <nav className="flex">
           <div className="mr-4 mt-1">
