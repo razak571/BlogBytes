@@ -1,33 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
-// import { useDispatch } from "react-redux";
-// import { addpost } from "../store/postSlice";
 import { useSelector } from "react-redux";
 
 function AllPosts() {
-  // const [allPosts, setAllPosts] = useState([]);
-  // const dispatch = useDispatch();
+  // const [posts, setPosts] = useState([]);
   const allPosts = useSelector((state) => state.post.posts);
 
-  // (async () => {
-  //   const posts = await appwriteService.getPosts([]);
+  // useEffect(() => {}, []);
 
-  //   if (posts) {
-  //     setAllPosts(posts.documents);
-  //   }
-  // })();
-  // dispatch(addpost(allPosts));
-  // console.log('posts state', allPosts)
-
-  // appwriteService.getPosts([]).then((posts) => { // [] indicates no query passing
-  //   if (posts) {
-  //     setPosts(posts.documents);
-  //     // console.log('posts::', posts) //{}
-  //     // console.log('A posts::', aposts)//[]
-  //   }
-  //   dispatch(addpost(aposts))
-  // });
+  //   useEffect(() => {
+  //   appwriteService.getPosts([]).then((posts) => {
+  //     if (posts) {
+  //       setPosts(posts.documents);
+  //     }
+  //   });
+  // }, []);
   return (
     <div className="w-full py-8">
       <Container>

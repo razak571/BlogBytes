@@ -46,29 +46,28 @@ function PostCard({ $id, title, featuredImage, $createdAt, authorName }) {
   };
 
   return (
-    <Link to={`/post/${$id}`} className={``}>
+    <Link to={`/post/${$id}`} className="post-card-link">
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className=" post-card w-full bg-gray-100 rounded-xl p-4"
+        className="post-card"
       >
-        <div className="w-full justify-center mb-4 ">
+        <div className="post-card-image-container">
           <img
             src={appwriteService.getFilePreview(featuredImage)}
             alt={title}
-            className="rounded-xl"
+            className="post-card-image"
           />
         </div>
-        <h1 className="font-semibold  text-gray-700 hover:text-indigo-700">
-          {" "}
-          Title : {title}{" "}
+        <h1 className="post-card-title">
+          Title: {title}
         </h1>
-        <h6 className="font-semibold text-gray-700 hover:text-indigo-700">
+        <h6 className="post-card-author">
           Author: {capitalizedAuthorName}
         </h6>
-        <h6 className="font-semibold text-gray-700 hover:text-indigo-700">
-          Created on : {formatDate($createdAt)}
+        <h6 className="post-card-date">
+          Created on: {formatDate($createdAt)}
         </h6>
       </div>
     </Link>

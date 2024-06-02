@@ -27,20 +27,24 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  (async () => {
-    const posts = await appwriteService.getPosts([]);
+  useEffect(() => {
+    (async () => {
+      const posts = await appwriteService.getPosts([]);
 
-    if (posts) {
-      setAllPosts(posts.documents);
-    }
-  })();
-  dispatch(addpost(allPosts));
+      if (posts) {
+        setAllPosts(posts.documents);
+      }
+    })();
+  }, []);
 
+  useEffect(() => {
+    dispatch(addpost(allPosts));
+  }, [allPosts]);
   return !loading ? (
     <div className="min-h-screen flex flex-wrap content-between  ">
       <div className="w-full block">
         <Header />
-        <main className="bg-gray-700 mt-16">
+        <main className=" mt-16 bg-gray-700">
           <Outlet />
         </main>
         <Footer />
@@ -50,3 +54,5 @@ function App() {
 }
 
 export default App;
+
+//bg-gray-700
